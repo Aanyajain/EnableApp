@@ -238,3 +238,5 @@ const styles = StyleSheet.create({
     color: '#B0171F',
   },
 });
+
+export default SpeechText;

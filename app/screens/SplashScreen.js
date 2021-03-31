@@ -2,8 +2,9 @@ import Onboarding from 'react-native-onboarding-swiper';
 import {Image, StyleSheet} from 'react-native';
 import React from 'react';
 
-const SplashScreen = () => (
+const SplashScreen = ({navigation}) => (
   <Onboarding
+  onDone={()=>navigation.replace("Home")}
     pages={[
       {
         backgroundColor: '#fff',

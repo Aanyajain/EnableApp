@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Text, ScrollView} from 'react-native';
 import {Card, Button, Icon} from 'react-native-elements';
 
-const MainScreen = () => {
+const MainScreen = ({navigation}) => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -17,9 +10,7 @@ const MainScreen = () => {
           <Text style={styles.content}>WELCOME TO ENABLE!!</Text>
           <Card title="Blind People">
             {/* <Image source={require('./images/circle.png')} /> */}
-            <Text style={styles.paragraph}>
-             Image Caption Generator
-            </Text>
+            <Text style={styles.paragraph}>Image Caption Generator</Text>
             <Button
               buttonStyle={{
                 borderRadius: 0,
@@ -28,12 +19,11 @@ const MainScreen = () => {
                 marginBottom: 0,
               }}
               title="VIEW NOW"
+              onPress={()=>navigation.navigate("TextSpeech")}
             />
           </Card>
           <Card title="sign lang">
-            <Text style={styles.paragraph}>
-              Sign language detection
-            </Text>
+            <Text style={styles.paragraph}>Sign language detection</Text>
             <Button
               buttonStyle={{
                 borderRadius: 0,
@@ -42,12 +32,11 @@ const MainScreen = () => {
                 marginBottom: 0,
               }}
               title="VIEW NOW"
+              onPress={()=>navigation.navigate("SignLang")}
             />
           </Card>
           <Card title="SpeechText">
-            <Text style={styles.paragraph}>
-              Speech to Text
-            </Text>
+            <Text style={styles.paragraph}>Speech to Text</Text>
             <Button
               buttonStyle={{
                 borderRadius: 0,
@@ -56,6 +45,7 @@ const MainScreen = () => {
                 marginBottom: 0,
               }}
               title="VIEW NOW"
+              onPress={() => navigation.navigate('SpeechText')}
             />
           </Card>
         </View>
@@ -70,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    margin:20,
+    margin: 20,
     backgroundColor: '#ecf0f1',
   },
   paragraph: {
@@ -80,12 +70,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#34495e',
   },
-  content:{
+  content: {
     textAlign: 'center',
-    fontSize:28,
-    fontWeight:'bold',
-    marginBottom:20,
-  }
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
 });
 
 export default MainScreen;
