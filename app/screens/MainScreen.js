@@ -1,54 +1,51 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Text, ScrollView} from 'react-native';
-import {Card, Button, Icon} from 'react-native-elements';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  ScrollView,
+  FlatList,
+} from 'react-native';
+import CardScreen from '../components/CardScreen';
 
-const MainScreen = ({navigation}) => {
+const data = [
+  {
+    id: '1',
+    title: 'Blind People',
+    subtitle: 'Image Caption genearator',
+    screenName: 'TextSpeech',
+  },
+  {
+    id: '2',
+    title: 'sign lang',
+    subtitle: 'Sign Languager',
+    screenName: 'SignLang',
+  },
+  {
+    id: '3',
+    title: 'SpeechText',
+    subtitle: 'SpeechToText',
+    screenName: 'SpeechText',
+  },
+];
+
+const MainScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
-        <View>
-          <Text style={styles.content}>WELCOME TO ENABLE!!</Text>
-          <Card title="Blind People">
-            {/* <Image source={require('./images/circle.png')} /> */}
-            <Text style={styles.paragraph}>Image Caption Generator</Text>
-            <Button
-              buttonStyle={{
-                borderRadius: 0,
-                marginLeft: 0,
-                marginRight: 0,
-                marginBottom: 0,
-              }}
-              title="VIEW NOW"
-              onPress={()=>navigation.navigate("TextSpeech")}
+        <Text style={styles.content}>WELCOME TO ENABLE!!</Text>
+        <FlatList
+          data={data}
+          vertical={true}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <CardScreen
+              title={item.title}
+              subtitle={item.subtitle}
+              onPress={() => navigation.navigate(item.screenName)}
             />
-          </Card>
-          <Card title="sign lang">
-            <Text style={styles.paragraph}>Sign language detection</Text>
-            <Button
-              buttonStyle={{
-                borderRadius: 0,
-                marginLeft: 0,
-                marginRight: 0,
-                marginBottom: 0,
-              }}
-              title="VIEW NOW"
-              onPress={()=>navigation.navigate("SignLang")}
-            />
-          </Card>
-          <Card title="SpeechText">
-            <Text style={styles.paragraph}>Speech to Text</Text>
-            <Button
-              buttonStyle={{
-                borderRadius: 0,
-                marginLeft: 0,
-                marginRight: 0,
-                marginBottom: 0,
-              }}
-              title="VIEW NOW"
-              onPress={() => navigation.navigate('SpeechText')}
-            />
-          </Card>
-        </View>
+          )}
+        />
       </SafeAreaView>
     </ScrollView>
   );
@@ -63,13 +60,7 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: '#ecf0f1',
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#34495e',
-  },
+
   content: {
     textAlign: 'center',
     fontSize: 28,

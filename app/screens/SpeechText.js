@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -158,7 +158,7 @@ const SpeechText = () => {
           })}
         </ScrollView>
         <Text style={styles.textStyle}>Results</Text>
-        <ScrollView style={{marginBottom: 42}}>
+        <ScrollView style={{ marginBottom: 42 }}>
           {results.map((result, index) => {
             return (
               <Text key={`result-${index}`} style={styles.textStyle}>
@@ -240,3 +240,4 @@ const styles = StyleSheet.create({
 });
 
 export default SpeechText;
+
