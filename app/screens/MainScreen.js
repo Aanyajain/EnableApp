@@ -12,7 +12,7 @@ const data = [
   {
     id: '1',
     title: 'Blind People',
-    subtitle: 'Image Caption genearator',
+    subtitle: 'Image Caption genearators',
     screenName: 'TextSpeech',
   },
   {
@@ -29,7 +29,7 @@ const data = [
   },
 ];
 
-const MainScreen = ({ navigation }) => {
+const MainScreen = ({navigation}) => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -38,7 +38,7 @@ const MainScreen = ({ navigation }) => {
           data={data}
           vertical={true}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <CardScreen
               title={item.title}
               subtitle={item.subtitle}
