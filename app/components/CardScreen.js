@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {Card, Button, Icon} from 'react-native-elements';
+import { View, StyleSheet, Text } from 'react-native';
+import { Card, Button, Icon } from 'react-native-elements';
 import SpeechText from '../screens/SpeechText';
 
-const CardScreen = ({title, subtitle, navigation, onPress}) => {
+const CardScreen = ({ title, subtitle, navigation, onPress }) => {
   return (
     <View>
-      <Card title={title}>
+      <Card
+        title={title}>
         <Text style={styles.paragraph}>{subtitle}</Text>
         <Button
           buttonStyle={{

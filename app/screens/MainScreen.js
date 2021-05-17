@@ -18,7 +18,7 @@ const data = [
   {
     id: '2',
     title: 'sign lang',
-    subtitle: 'Sign Languager',
+    subtitle: 'Sign Language',
     screenName: 'SignLang',
   },
   {

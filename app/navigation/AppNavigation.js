@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import SpeechText from '../screens/SpeechText';
 import TextSpeech from '../screens/TextSpeech';
 import SignLang from '../screens/SignLang';
@@ -15,17 +15,17 @@ function AppNavigation() {
       <Stack.Screen
         name="Splash"
         component={SplashScreen}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="CardScreen"
         component={CardScreen}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Home"
         component={MainScreen}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="SpeechText" component={SpeechText} />
       <Stack.Screen name="TextSpeech" component={TextSpeech} />
