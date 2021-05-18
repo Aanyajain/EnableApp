@@ -5,21 +5,23 @@ import SpeechText from '../screens/SpeechText';
 
 const CardScreen = ({ title, subtitle, navigation, onPress }) => {
   return (
-    <View>
-      <Card
-        title={title}>
+    <View style={styles.cont}>
+      <View style={styles.card}>
+
         <Text style={styles.paragraph}>{subtitle}</Text>
         <Button
           buttonStyle={{
-            borderRadius: 0,
-            marginLeft: 0,
+            borderRadius: 6,
+            width: 140,
+            marginLeft: 50,
+            marginTop: 20,
             marginRight: 0,
-            marginBottom: 0,
+            marginBottom: 20,
           }}
           title="VIEW NOW"
           onPress={onPress}
         />
-      </Card>
+      </View>
       {/* <Card title="sign lang">
         <Text style={styles.paragraph}>Sign language detection</Text>
         <Button
@@ -52,12 +54,27 @@ const CardScreen = ({ title, subtitle, navigation, onPress }) => {
 
 const styles = StyleSheet.create({
   paragraph: {
-    margin: 24,
+    marginVertical: 15,
+    marginRight: 5,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#34495e',
+
   },
+  cont: {
+    flex: 1,
+
+  },
+  card: {
+    height: 160,
+    width: 350,
+    backgroundColor: "white",
+    padding: 15,
+    marginVertical: 12,
+    borderRadius: 10,
+    elevation: 6,
+  }
 });
 
 export default CardScreen;

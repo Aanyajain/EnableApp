@@ -6,13 +6,16 @@ import {
   View,
   Image,
   TouchableHighlight,
+  TouchableOpacity,
   ScrollView,
 } from 'react-native';
 
 // import Voice
 import Voice from '@react-native-voice/voice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SpeechText = () => {
+const SpeechText = ({ navigation }) => {
+
   const [pitch, setPitch] = useState('');
   const [error, setError] = useState('');
   const [end, setEnd] = useState('');
@@ -53,9 +56,13 @@ const SpeechText = () => {
     setError(JSON.stringify(e.error));
   };
 
-  const onSpeechResults = e => {
+  const onSpeechResults = async (e) => {
     //Invoked when SpeechRecognizer is finished recognizing
-    console.log('onSpeechResults: ', e);
+    console.log(' welcome to onSpeechResults: ', e);
+    const val = JSON.stringify(e.value);
+    console.log("value from speech ", e.value[0]);
+
+    await AsyncStorage.setItem('mike', val);
     setResults(e.value);
   };
 
@@ -123,6 +130,15 @@ const SpeechText = () => {
     }
   };
 
+  const storeData = async () => {
+    try {
+      const val = JSON.stringify(results[0])
+      await AsyncStorage.setItem('mike', val)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  console.log("res", results)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -138,15 +154,23 @@ const SpeechText = () => {
           <Text style={styles.textWithSpaceStyle}>{`Pitch: \n ${pitch}`}</Text>
           <Text style={styles.textWithSpaceStyle}>{`Error: \n ${error}`}</Text>
         </View>
-        <TouchableHighlight onPress={startRecognizing}>
+        <TouchableOpacity onPress={startRecognizing}>
           <Image
             style={styles.imageButton}
-            source={{
-              uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/microphone.png',
-            }}
+            source={require("../images/microphone.png")}
           />
-        </TouchableHighlight>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => storeData().then(() => navigation.navigate("Notes", { mike: results }))}>
+          <Text style={{
+            backgroundColor: "#87cefa",
+            width: 50,
+            height: 34,
+            padding: 8,
+            borderRadius: 4,
+            marginTop: 20,
+            color: "white"
+          }}>Save</Text>
+        </TouchableOpacity>
         <Text style={styles.textStyle}>Partial Results</Text>
         <ScrollView>
           {partialResults.map((result, index) => {
@@ -183,9 +207,10 @@ const SpeechText = () => {
             style={styles.buttonStyle}>
             <Text style={styles.buttonTextStyle}>Destroy</Text>
           </TouchableHighlight>
+
         </View>
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 };
 
@@ -195,6 +220,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     padding: 5,
+    backgroundColor: "#F5FCFF"
   },
   headerContainer: {
     flexDirection: 'row',
@@ -202,7 +228,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   titleText: {
-    fontSize: 22,
+    fontSize: 24,
     textAlign: 'center',
     fontWeight: 'bold',
   },

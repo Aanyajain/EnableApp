@@ -7,12 +7,13 @@ import {
   FlatList,
 } from 'react-native';
 import CardScreen from '../components/CardScreen';
+import CustomCard from '../components/CustomCard';
 
 const data = [
   {
     id: '1',
     title: 'Blind People',
-    subtitle: 'Image Caption genearators',
+    subtitle: 'Image Caption generators',
     screenName: 'TextSpeech',
   },
   {
@@ -29,25 +30,27 @@ const data = [
   },
 ];
 
-const MainScreen = ({navigation}) => {
+const MainScreen = ({ navigation }) => {
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.content}>WELCOME TO ENABLE!!</Text>
-        <FlatList
-          data={data}
-          vertical={true}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => (
-            <CardScreen
-              title={item.title}
-              subtitle={item.subtitle}
-              onPress={() => navigation.navigate(item.screenName)}
-            />
-          )}
-        />
-      </SafeAreaView>
-    </ScrollView>
+
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.content}>WELCOME TO ENABLE!!</Text>
+
+      <FlatList
+
+        data={data}
+        vertical={true}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <CardScreen
+            title={item.title}
+            subtitle={item.subtitle}
+            image={item.image}
+            onPress={() => navigation.navigate(item.screenName)}
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 };
 
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
   },
 });
 

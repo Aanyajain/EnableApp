@@ -6,6 +6,7 @@ import SignLang from '../screens/SignLang';
 import MainScreen from '../screens/MainScreen';
 import CardScreen from '../components/CardScreen';
 import SplashScreen from '../screens/SplashScreen';
+import NoteScreen from '../screens/NoteScreen';
 
 const Stack = createStackNavigator();
 
@@ -25,11 +26,62 @@ function AppNavigation() {
       <Stack.Screen
         name="Home"
         component={MainScreen}
-        options={{ headerShown: false }}
+
+        options={{
+          headerShown: false,
+
+
+        }}
+
       />
-      <Stack.Screen name="SpeechText" component={SpeechText} />
-      <Stack.Screen name="TextSpeech" component={TextSpeech} />
-      <Stack.Screen name="SignLang" component={SignLang} />
+      <Stack.Screen name="SpeechText" component={SpeechText}
+        options={{
+          headerStyle: {
+            backgroundColor: '#F5FCFF',
+          },
+          headerTintColor: 'black',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 22,
+          },
+        }}
+      />
+      <Stack.Screen name="TextSpeech" component={TextSpeech}
+        options={{
+          headerStyle: {
+            backgroundColor: '#F5FCFF',
+          },
+          headerTintColor: 'black',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 22,
+          },
+        }}
+      />
+      <Stack.Screen name="SignLang" component={SignLang}
+        options={{
+          headerStyle: {
+            backgroundColor: '#F5FCFF',
+          },
+          headerTintColor: 'black',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 22,
+          },
+        }}
+      />
+      <Stack.Screen name="Notes" component={NoteScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#87cefa',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 22,
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
